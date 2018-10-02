@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://SadLibs.gd" type="Script" id=1]
-[ext_resource path="res://gfx/asdrubal-luna-485688-unsplash.jpg" type="Texture" id=2]
+[ext_resource path="res://annie-spratt-593473-unsplash.jpg" type="Texture" id=2]
 [ext_resource path="res://gfx/Sierra Nevada Road.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://gfx/Blank-Sm-Key.png" type="Texture" id=4]
+[ext_resource path="res://gfx/Blank-Sm-Key-Pressed.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -10,7 +12,7 @@ size = 50
 use_mipmaps = false
 use_filter = false
 font_data = ExtResource( 3 )
-_sections_unfolded = [ "Font", "Settings" ]
+_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
 [node name="SadLibs" type="Node2D" index="0"]
 
@@ -22,7 +24,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 1080.0
+margin_left = -2.0
+margin_top = -581.0
+margin_right = 1078.0
 margin_bottom = 720.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -32,6 +36,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 texture = ExtResource( 2 )
 expand = true
+stretch_mode = 0
 
 [node name="StoryText" type="RichTextLabel" parent="Background" index="0"]
 
@@ -39,11 +44,95 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 1079.0
-margin_bottom = 570.0
+margin_left = 29.0
+margin_top = 592.0
+margin_right = 1055.0
+margin_bottom = 1167.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
 mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = ""
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = ""
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+_sections_unfolded = [ "BBCode", "Margin", "Size Flags", "Theme", "custom_fonts", "custom_styles" ]
+
+[node name="TextBox" type="LineEdit" parent="Background" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 33.0
+margin_top = 1216.0
+margin_right = 723.0
+margin_bottom = 1269.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 1
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 1 )
+focus_mode = 2
+context_menu_enabled = true
+placeholder_alpha = 0.6
+caret_blink = false
+caret_blink_speed = 0.65
+caret_position = 0
+_sections_unfolded = [ "custom_fonts", "custom_styles" ]
+
+[node name="SubmitButton" type="TextureButton" parent="Background" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 829.0
+margin_top = 1192.0
+margin_right = 973.0
+margin_bottom = 1279.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
+expand = true
+_sections_unfolded = [ "Material", "Pause", "Textures", "Visibility" ]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Background/SubmitButton" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 23.0
+margin_top = 22.0
+margin_right = 134.0
+margin_bottom = 64.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
@@ -54,11 +143,15 @@ visible_characters = -1
 percent_visible = 1.0
 meta_underlined = true
 tab_size = 4
-text = "Text"
-scroll_active = true
+text = "Submit"
+scroll_active = false
 scroll_following = false
 selection_enabled = false
 override_selected_font_color = false
-_sections_unfolded = [ "Margin", "custom_fonts" ]
+_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Material", "Mouse", "Rect", "Visibility", "custom_fonts" ]
+
+[connection signal="text_entered" from="Background/TextBox" to="." method="_on_TextBox_text_entered"]
+
+[connection signal="pressed" from="Background/SubmitButton" to="." method="_on_SubmitButton_pressed"]
 
 
